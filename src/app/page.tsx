@@ -2,12 +2,12 @@
 import Card from "@/components/card";
 import Filtering from "@/components/filtering";
 import Sorting from "@/components/sorting";
-import { DataProps } from "@/lib/type";
 import { setData, setFilteredData, setLoading } from "@/redux/slice";
 import { CircularProgress } from "@mui/material";
 import { RootState } from "@/redux/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "@/lib/data";
 
 export default function Home() {
   
@@ -16,18 +16,13 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try{
-        const response = await fetch('https://api.github.com/users/google/repos?per_page=100');
-        const responseData = await response.json() as DataProps[];
-        dispatch(setData(responseData));
-        dispatch(setFilteredData(responseData));
-        dispatch(setLoading(false));
-      } catch (error) {
-        console.log(error);
-      }
+    const getData = async () => {
+      const responseData = await fetchData();
+      dispatch(setData(responseData));
+      dispatch(setFilteredData(responseData));
+      dispatch(setLoading(false));
     };
-    fetchData();
+    getData();
   }, []);
 
   return (
