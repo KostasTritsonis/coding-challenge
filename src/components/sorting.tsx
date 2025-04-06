@@ -1,23 +1,22 @@
-import { setFilteredData } from "@/redux/slice";
+import { setTempData } from "@/redux/slice";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Sorting() {
 
   const data = useSelector((state:RootState) => state.data.data);
-  const filteredData = useSelector((state:RootState) => state.data.data);
   const dispatch = useDispatch();
   
   const handleSorting = (value: string) => {
     if (value === "Name") {
-      const sortedData = [...filteredData].sort((a, b) =>  (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1));
-      dispatch(setFilteredData(sortedData));
+      const sortedData = [...data].sort((a, b) =>  (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1));
+      dispatch(setTempData(sortedData));
     } else if (value === "Stars") {
-      const sortedData = [...filteredData].sort((a, b) => b.stargazers_count - a.stargazers_count);
-      dispatch(setFilteredData(sortedData));
+      const sortedData = [...data].sort((a, b) => b.stargazers_count - a.stargazers_count);
+      dispatch(setTempData(sortedData));
     }
     else {
-      dispatch(setFilteredData(data));
+      dispatch(setTempData(data));
     }
   };
 

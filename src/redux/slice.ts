@@ -3,13 +3,13 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 type DataState = {
   data: DataProps[];
-  filteredData: DataProps[];
+  tempData: DataProps[];
   loading: boolean;
 };
 
 const initialState: DataState = {
   data: [] ,
-  filteredData: [],
+  tempData: [],
   loading: true,
 };
 
@@ -20,8 +20,8 @@ const dataSlice = createSlice({
     setData: (state, action: PayloadAction<DataProps[]>) => {
       state.data = action.payload;
     },
-    setFilteredData: (state, action: PayloadAction<DataProps[]>) => {
-      state.filteredData = action.payload;
+    setTempData: (state, action: PayloadAction<DataProps[]>) => {
+      state.tempData = action.payload;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
@@ -29,5 +29,5 @@ const dataSlice = createSlice({
   }
 });
 
-export const { setData, setFilteredData, setLoading } = dataSlice.actions;
+export const { setData, setTempData, setLoading } = dataSlice.actions;
 export default dataSlice.reducer;

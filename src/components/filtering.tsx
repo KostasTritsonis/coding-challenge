@@ -1,4 +1,4 @@
-import { setFilteredData } from "@/redux/slice";
+import { setTempData } from "@/redux/slice";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,7 +8,7 @@ export default function Filtering() {
   const data = useSelector((state:RootState) => state.data.data);
   const handleFilter = (value: string) => {
     const filteredData = data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
-    dispatch(setFilteredData(filteredData));
+    dispatch(setTempData(filteredData));
   };
 
   return (
