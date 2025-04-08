@@ -9,7 +9,7 @@ export default function Sorting() {
   
   const handleSorting = (value: string) => {
     if (value === "Name") {
-      const sortedData = [...data].sort((a, b) =>  (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1));
+      const sortedData = [...data].sort((a, b) =>  (a.name > b.name ? 1 : -1));
       dispatch(setTempData(sortedData));
     } else if (value === "Stars") {
       const sortedData = [...data].sort((a, b) => b.stargazers_count - a.stargazers_count);
