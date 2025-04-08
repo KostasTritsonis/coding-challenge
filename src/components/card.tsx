@@ -10,7 +10,7 @@ export default function Card(props: DataProps) {
   const text = lorem50.substring(randomNumber, randomNumber + 50); 
   
   return (
-    <li className="relative flex flex-col justify-evenly w-48 h-52 overflow-y-auto text-center bg-zinc-800 rounded-lg shadow-md p-2  break-words  hover:scale-105  duration-300 ease-in-out transition ">
+    <li className="relative flex flex-col justify-evenly w-48 h-52 overflow-y-auto text-center text-zinc-50 bg-zinc-800 rounded-lg shadow-md p-2  break-words  hover:-translate-y-2  duration-300 transition">
       <p className='text-md font-bold text-zinc-50 mr-1'>{props.name}</p>
       {props.stargazers_count > 1000 && <StarsIcon className='ml-2 text-blue-500 absolute top-0.5 right-0.5'/>}
       <p className='font-normal gap-1'><StarIcon className='text-amber-400 mb-1 mr-1'/>{props.stargazers_count}</p>
